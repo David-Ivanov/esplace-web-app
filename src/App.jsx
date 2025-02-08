@@ -1,5 +1,8 @@
 import './App.css';
-const tg = window.Telegram.WebApp;
+const TG = require('telegram-bot-api');
+
+console.log(TG);
+
 function App() {
   return (
     <div className="App">
