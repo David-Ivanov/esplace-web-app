@@ -1,5 +1,5 @@
 import './App.css';
-const TG = require('telegram-bot-api');
+const TG = window.Telegram.WebApp;
 
 console.log(TG);
 
