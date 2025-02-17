@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../redux/products/operations";
 import { selectProducts } from "../../redux/products/selectors";
-import { Card } from "@mui/material";
+import Card from "../Card/Card";
+
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -12,13 +13,23 @@ const HomePage = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-    console.log(products);
+
+    products.map(product => { 
+        console.log(product);
+    });
     
     return (
     <ul>
         {products.map(product => (
             <li key={product._id}>
+                <div>{product.title}</div>
                 <Card 
+                    title={product.title}
+                    desc={product.description}
+                    gram={product.gram}
+                    price={product.price}
+                    tag={product.tag}
+                    image={product.image}
                 />
             </li>
         ))}
