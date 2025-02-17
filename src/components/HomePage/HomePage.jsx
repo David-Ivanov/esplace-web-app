@@ -4,7 +4,7 @@ import { getAllProducts } from "../../redux/products/operations";
 import { selectProducts } from "../../redux/products/selectors";
 import { Card } from "@mui/material";
 
-const ProductList = () => {
+const HomePage = () => {
     const dispatch = useDispatch();
     const products = useSelector(selectProducts);
 
@@ -25,4 +25,4 @@ const ProductList = () => {
     </ul>);
 }
 
-export default ProductList;
+export default HomePage;
