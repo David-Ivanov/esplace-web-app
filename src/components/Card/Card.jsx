@@ -1,6 +1,6 @@
-const Card = ({key}) => {
+const Card = () => {
     return (
-        <li key={key}></li>
+        <li>product</li>
     )
 }
 

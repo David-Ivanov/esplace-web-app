@@ -1,7 +1,7 @@
 import './App.css';
-const TG = window.Telegram.WebApp;
+// const TG = window.Telegram.WebApp;
 
-console.log(TG);
+// console.log(TG);
 
 function App() {
   return (
