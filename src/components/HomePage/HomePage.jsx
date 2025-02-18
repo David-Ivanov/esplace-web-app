@@ -13,10 +13,6 @@ const HomePage = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-
-    products.map(product => { 
-        console.log(product);
-    });
     
     return (
     <ul>
@@ -30,6 +26,7 @@ const HomePage = () => {
                     price={product.price}
                     tag={product.tag}
                     image={product.image}
+                    id={product._id}
                 />
             </li>
         ))}

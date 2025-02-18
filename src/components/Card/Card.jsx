@@ -1,5 +1,25 @@
 
-const Card = ({ title, desc, gram, image, price, tag }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { selectProducts } from "../../redux/cart/selectors";
+import { addProductToCart } from "../../redux/cart/slice";
+import { useEffect } from "react";
+
+
+const Card = ({ title, desc, gram, image, price, tag, id }) => {
+
+    const dispatch = useDispatch();
+
+    const productsInCart = useSelector(selectProducts);
+    const addToCart = () => {
+
+        dispatch(addProductToCart(id));
+    }
+    
+    
+    useEffect(() => {
+        console.table(productsInCart);
+    }, [productsInCart]);
+
     return (
         <>
             <img src={image} alt={title} width={100} height={100}/>
@@ -8,6 +28,8 @@ const Card = ({ title, desc, gram, image, price, tag }) => {
             <div>{gram}</div>
             <div>{price}</div>
             <div>{tag}</div>
+
+            <button onClick={addToCart}>Додати до корзини</button>
         </>
     )
 }
