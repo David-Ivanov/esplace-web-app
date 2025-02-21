@@ -1,24 +1,19 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectProducts } from "../../redux/cart/selectors";
+import { selectCartProducts } from "../../redux/cart/selectors";
 import { addProductToCart } from "../../redux/cart/slice";
-import { useEffect } from "react";
 
-
-const Card = ({ title, desc, gram, image, price, tag, id }) => {
+const Card = ({ title, desc, gram, image, price, tag, id, setIsProductsInCart }) => {
 
     const dispatch = useDispatch();
 
-    const productsInCart = useSelector(selectProducts);
+    const productsInCart = useSelector(selectCartProducts);
     const addToCart = () => {
-
         dispatch(addProductToCart(id));
+        setIsProductsInCart(true);
     }
     
     
-    useEffect(() => {
-        console.table(productsInCart);
-    }, [productsInCart]);
 
     return (
         <>

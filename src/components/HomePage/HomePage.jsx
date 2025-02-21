@@ -5,7 +5,7 @@ import { selectProducts } from "../../redux/products/selectors";
 import Card from "../Card/Card";
 
 
-const HomePage = () => {
+const HomePage = ({setIsProductsInCart}) => {
     const dispatch = useDispatch();
     const products = useSelector(selectProducts);
 
@@ -20,6 +20,7 @@ const HomePage = () => {
             <li key={product._id}>
                 <div>{product.title}</div>
                 <Card 
+                setIsProductsInCart={setIsProductsInCart}
                     title={product.title}
                     desc={product.description}
                     gram={product.gram}

@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createOrder } from "./operations";
+import toast from "react-hot-toast";
 
 
 const slice = createSlice({
@@ -37,7 +39,29 @@ const slice = createSlice({
                 productsInCart.push({ productId: action.payload, quantity: 1 });
             }
         }
-    }
+    },
+    extraReducers: builder =>
+        builder
+            .addCase(createOrder.pending, state => {
+                state.error = false;
+                state.isLoading = true;
+            })
+            .addCase(createOrder.fulfilled, (state) => {
+                state.order = {
+                    name: null,
+                    address: null,
+                    number: null,
+                    comment: null,
+                    products: [],
+                };
+                state.isLoading = false;
+                toast.success("Дякуємо за замовлення");
+            })
+            .addCase(createOrder.rejected, (state, action) => {
+                state.error = true;
+                state.isLoading = false;
+                toast.error(action.payload);
+            })
 
 });
 
